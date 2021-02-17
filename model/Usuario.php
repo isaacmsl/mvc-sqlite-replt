@@ -4,17 +4,27 @@ class Usuario {
     private $nome;
     private $email;
     private $senha;
+    private $setOnce = false;
 
-    public function Usuario() {}
+    public function setOnce(?int $id, ?string $nome, ?string $email, ?string $senha): bool {
+        if (!$this->setOnce) {
+            $this->id = $id;
+            $this->nome = $nome;
+            $this->email = $email;
+            $this->senha = $senha;
 
-    public function __toString() {
-        return $this->nome . ',' . $this->email . ',' . $this->senha;
+            $this->setOnce = true;
+            return true;
+        }
+
+        return false;
     }
     
     // CRUD
     public function adicionar(): bool {
         $db = new PDO('sqlite:db/usuarios.db');
 
+        // pegar id criado para settar o valor de $this->id
         $adicionou = $db->exec("
           INSERT INTO usuarios (nome, email, senha) VALUES  (\"$this->nome\",\"$this->email\",\"$this->senha\");
         ");
@@ -58,10 +68,12 @@ class Usuario {
         foreach($usuariosDb as $usuarioDb) {
             $usuario = new Usuario();
             
-            $usuario->setId(intval($usuarioDb['id']));
-            $usuario->setNome($usuarioDb['nome']);
-            $usuario->setEmail($usuarioDb['email']);
-            $usuario->setSenha($usuarioDb['senha']);
+            $id = intval($usuarioDb['id']);
+            $nome = $usuarioDb['nome'];
+            $email = $usuarioDb['email'];
+            $senha = $usuarioDb['senha'];
+
+            $usuario->setOnce($id, $nome, $email, $senha);
 
             array_push($usuariosResult, $usuario);
         }
@@ -69,15 +81,9 @@ class Usuario {
         return $usuariosResult;
     }
 
-    // alguma classe abstrata para o banco
-
     // getters e setters
     public function getId() {
         return $this->id;
-    }
-
-    public function setId(int $id) {
-        $this->id = $id;
     }
 
     public function getNome() {

@@ -7,26 +7,21 @@ class UsuarioController {
     // CRUD
     public function adicionar(string $nome, string $email, string $senha): bool {
         $usuario = new Usuario();
-        $usuario->setNome($nome);
-        $usuario->setEmail($email);
-        $usuario->setSenha($senha);
+        $usuario->setOnce(null, $nome, $email, $senha);
         
         return $usuario->adicionar();
     }
 
     public function remover(int $id): bool {
         $usuario = new Usuario();
-        $usuario->setId($id);
+        $usuario->setOnce($id, null, null, null);
 
         return $usuario->remover();
     }
 
     public function atualizar(int $id, string $nome, string $email, string $senha): bool {
         $usuario = new Usuario();
-        $usuario->setId($id);
-        $usuario->setNome($nome);
-        $usuario->setEmail($email);
-        $usuario->setSenha($senha);
+        $usuario->setOnce($id, $nome, $email, $senha);
 
         return $usuario->atualizar();
     }
