@@ -131,6 +131,12 @@ td > a {
     text-decoration: none;
 }
 
+td {
+    max-width: 200px;
+    word-wrap: break-word;
+    cursor: default;
+}
+
 td > button {
     background-color: transparent;
     outline: none;

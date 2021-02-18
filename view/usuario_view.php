@@ -72,10 +72,10 @@
                         $email = $usuario->getEmail(); 
                         $senha = $usuario->getSenha();
                     ?>
-                    <td><?=$id?></td> 
-                    <td><?=$nome?></td>
-                    <td><?=$email?></td>
-                    <td><?=$senha?></td>
+                    <td title="<?=$id?>"><?=$id?></td> 
+                    <td title="<?=$nome?>"><?=$nome?></td>
+                    <td title="<?=$email?>"><?=$email?></td>
+                    <td title="<?=$senha?>"><?=$senha?></td>
                     <td>
                         <a 
                             title="Remover"
