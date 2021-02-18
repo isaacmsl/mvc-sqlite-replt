@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;700&display=swap');
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background-image: linear-gradient(to right, #4359CE, #C44FC1);
+    display: grid;
+    place-items: center;
+}
+
+main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1000px;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+form > div {
+    display: flex;
+    background-color: #FFF;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    padding-left: 14px;
+}
+
+form > div:not(:last-child) {
+    gap: 14px;
+}
+
+form > div > input {
+    padding: 20px 30px;
+    width: 100%;
+    background-color: #FFF;
+    outline: none;
+}
+
+form > div:last-child  {
+    max-width: 140px;
+    padding-left: 0;
+}
+
+form > div:last-child > button {
+    background-color: #FFF;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+form > div:last-child:hover {
+    background-color: #000;
+    color: #FFF;
+}
+
+form > div:last-child:hover > button {
+    background-color: #000;
+    color: #FFF;
+}
+
+form > div:last-child:hover > button > img {
+    filter: brightness(0) invert(1);  
+}
+
+form > div > input[type=submit] {
+    cursor: pointer;
+}
+
+
+table {
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+}
+
+th, td {
+    padding: 20px;
+}
+
+th {
+    position: relative;
+}
+
+th > img {
+    position: absolute;
+    right: 18px;
+    top: 10px;
+}
+
+tr {
+    text-align: left;
+    background-color: #F6F6F6;
+}
+
+tr:first-child {
+    color: #FFF;
+    font-weight: 700;
+    background-color: #202832;
+}
+
+tr:nth-child(even) {
+    background-color: #FFF;
+}
+
+tr:hover:not(:first-child) {
+    background-color: #DDDDDD;
+}
+
+td > a {
+    text-decoration: none;
+}
+
+td > button {
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}

@@ -1,4 +1,6 @@
 <?php
+define("PATH_BD", "sqlite:" . dirname(__FILE__) ."/../db/usuarios.db");
+
 class Usuario {
     private $id;
     private $nome;
@@ -22,7 +24,7 @@ class Usuario {
     
     // CRUD
     public function adicionar(): bool {
-        $db = new PDO('sqlite:db/usuarios.db');
+        $db = new PDO(PATH_BD);
 
         // pegar id criado para settar o valor de $this->id
         $adicionou = $db->exec("
@@ -33,7 +35,7 @@ class Usuario {
     }
 
     public function remover(): bool {
-      $db = new PDO('sqlite:db/usuarios.db');
+      $db = new PDO(PATH_BD);
 
       $removeu = $db->exec("
         DELETE FROM usuarios WHERE id = \"$this->id\";
@@ -43,7 +45,7 @@ class Usuario {
     }
 
     public function atualizar(): bool {
-        $db = new PDO('sqlite:db/usuarios.db');
+        $db = new PDO(PATH_BD);
 
         $atualizou = $db->exec("
             UPDATE usuarios
@@ -58,7 +60,7 @@ class Usuario {
     }
 
     public function listar(): array {
-        $db = new PDO('sqlite:db/usuarios.db');
+        $db = new PDO(PATH_BD);
 
         $usuariosDb = $db->query("SELECT * FROM usuarios")->fetchALL(PDO::FETCH_ASSOC);
 

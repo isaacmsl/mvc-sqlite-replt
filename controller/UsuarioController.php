@@ -1,6 +1,6 @@
 <?php
 
-require_once 'model/Usuario.php';
+require_once dirname(__FILE__) .  '/../model/Usuario.php';
 
 class UsuarioController {
 
